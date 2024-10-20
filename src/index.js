@@ -1,7 +1,7 @@
-import express from 'express';
-import cors from 'cors';
-import dotenv from "dotenv";
-import routes from './routes.js';
+const express = require('express');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const routes = require("./routes.js");
 
 dotenv.config();
 
@@ -14,6 +14,12 @@ app.use(cors(
         optionsSuccessStatus: 200, // some legacy browsers choke on 204 
     } 
 ));
+
+app.use("/public", express.static("public"));
+
+app.get("/", (req, res)=>{
+    res.sendFile( __dirname+"/index.html");
+})
 
 app.use("/api", routes);
 const server  = ()=>{

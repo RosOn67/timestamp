@@ -51,4 +51,4 @@ const currentDate = (req, res)=>{
     }
 }
 
-export {DateParser, currentDate};
+module.exports = {DateParser, currentDate};
